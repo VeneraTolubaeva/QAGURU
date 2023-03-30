@@ -1,4 +1,4 @@
-package com.demoqa;
+package firstLesson;
 
 public class CssXpathExamples {
     void cssXpathExample() {

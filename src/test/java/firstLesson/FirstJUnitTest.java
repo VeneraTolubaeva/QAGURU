@@ -1,4 +1,4 @@
-package com.demoqa;
+package firstLesson;
 
 import org.junit.jupiter.api.*;
 
