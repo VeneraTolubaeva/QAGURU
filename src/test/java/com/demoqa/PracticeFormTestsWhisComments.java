@@ -1,13 +1,12 @@
-package homeWork;
+package com.demoqa;
 
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static java.lang.Character.CONTROL;
 
-public class PracticeFormTests extends PracticeFormConfig {
+public class PracticeFormTestsWhisComments extends PracticeFormConfig {
 
     @Test
     void successfulPracticeFormTest() {
