@@ -62,7 +62,7 @@ public class PracticeFormTestsWhisComments extends PracticeFormConfig {
                 text("practiceFormPicture.jpg"),
                 text("Some street 1"),
                 text("Haryana Karnal"));
-        $("#closeLargeModal").click();
+        //$("#closeLargeModal").click();
     }
 
 }

@@ -1,25 +1,26 @@
 package com.demoqa.tests;
 
-import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
-public class PracticeFormTests extends PracticeFormConfig {
-    @Test
+public class PracticeFormTests extends PracticeFormConfig{
     void successfulPracticeFormTest() {
-        registrationPage.openPage()
-                .setFirstName("Venera")
-                .setLastName("Tolubaeva")
-                .setUserEmail("aaa@qa.com")
-                .setGender("Female")
-                .setPhoneNumber("9999999999")
-                .setBirthDate("30", "November", "1987");
 
-
-
-
+        open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        $("#firstName").setValue("Venera");
+        $("#lastName").setValue("Tolubaeva");
+        $("#userEmail").setValue("aaa@qa.com");
+        $(byText("Female")).click();
+        $("#userNumber").setValue("9999999999");
+        $("#dateOfBirthInput").pressEnter();
+        $("#dateOfBirthInput").clear();
+        $(".react-datepicker__year-select").selectOptionByValue("1987");
+        $(".react-datepicker__month-select").selectOptionByValue("10");
+        $(".react-datepicker__day--030").click();
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbies-checkbox-1").parent().click();
         $(byText("Reading")).click();
@@ -43,5 +44,4 @@ public class PracticeFormTests extends PracticeFormConfig {
                 text("Haryana Karnal"));
         $("#closeLargeModal").click();
     }
-
 }
