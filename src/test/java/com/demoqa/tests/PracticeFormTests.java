@@ -1,6 +1,5 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,15 +13,13 @@ public class PracticeFormTests extends PracticeFormConfig {
                 .setFirstName("Venera")
                 .setLastName("Tolubaeva")
                 .setUserEmail("aaa@qa.com")
-                .setGender("Female");
+                .setGender("Female")
+                .setPhoneNumber("9999999999")
+                .setBirthDate("30", "November", "1987");
 
 
-        $("#userNumber").setValue("9999999999");
-        $("#dateOfBirthInput").pressEnter();
-        $("#dateOfBirthInput").clear();
-        $(".react-datepicker__year-select").selectOptionByValue("1987");
-        $(".react-datepicker__month-select").selectOptionByValue("10");
-        $(".react-datepicker__day--030").click();
+
+
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbies-checkbox-1").parent().click();
         $(byText("Reading")).click();
