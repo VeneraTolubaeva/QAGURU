@@ -1,5 +1,6 @@
 package com.demoqa;
 
+import com.demoqa.tests.PracticeFormConfig;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
