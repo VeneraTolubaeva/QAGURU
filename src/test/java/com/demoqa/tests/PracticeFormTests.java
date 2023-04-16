@@ -1,4 +1,4 @@
-package com.demoqa;
+package com.demoqa.tests;
 
 import com.demoqa.tests.PracticeFormConfig;
 import org.junit.jupiter.api.Test;
