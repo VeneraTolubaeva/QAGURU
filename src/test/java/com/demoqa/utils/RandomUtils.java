@@ -6,6 +6,20 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
     static String[] genders = {"Male", "Female", "Other"};
+    static String[] day = {"001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013",
+    "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029",
+    "030", "031"};
+    static String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"};
+    static String[] subjects = {"Maths", "Accounting", "Arts", "Chemistry", "Physics", "History", "Economics",
+            "Social Studies", "Civics", "Hindi", "English", "Biology", "Computer Science"};
+    static String[] hobbies = {"Sports", "Reading", "Music"};
+    static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+    static String[] cityForNCR = {"Delhi", "Gurgaon", "Noida"};
+    static String[] cityForUttarPradesh = {"Agra", "Lucknow", "Merrut"};
+    static String[] cityForHaryana = {"Karnal", "Panipat"};
+    static String[] cityForRajasthan = {"Jaipur", "Jaiselmer"};
+
 
     public static void main(String[] args) {
         System.out.println(getRandomUuid());
@@ -47,5 +61,48 @@ public class RandomUtils {
     public static String getRandomGender(){
         return getRandomItemFromArray(genders);
     }
+    public static String getRandomDay() {
+        int day = getRandomInt(1, 30);
+        if (day < 10) {
+            return "0" + Integer.toString(day);
+        } else {
+            return Integer.toString(day);
+        }
+    }
+    public static String getRandomMonths() {
+        return getRandomItemFromArray(months);
+    }
+    public static String getRandomSubjects(){
+        return getRandomItemFromArray(subjects);
+    }
+    public static String getRandomHobbies(){
+        return getRandomItemFromArray(hobbies);
+    }
+    public static String getRandomState(){
+        return getRandomItemFromArray(state);
+    }
+    public static String getRandomCity(String state){
+        String city;
+        switch (state) {
+            case "NCR": {
+                city = getRandomItemFromArray(cityForNCR);
+                return city;
+            }
+            case "Uttar Pradesh": {
+                city = getRandomItemFromArray(cityForUttarPradesh);
+                return city;
+            }
+            case "Haryana": {
+                city = getRandomItemFromArray(cityForHaryana);
+                return city;
+            }
+            case "Rajasthan": {
+                city = getRandomItemFromArray(cityForRajasthan);
+                return city;
+            }
+        }
+        return null;
+    }
+
 
 }

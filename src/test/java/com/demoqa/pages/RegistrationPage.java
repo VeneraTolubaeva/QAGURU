@@ -18,7 +18,7 @@ public class RegistrationPage {
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             gender = $("#genterWrapper"),
-            phoneNumber = $("#userNumber"),
+            userNumber = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
@@ -53,8 +53,8 @@ public class RegistrationPage {
         gender.$(byText(value)).click();
         return this;
     }
-    public RegistrationPage setPhoneNumber(String value) {
-        phoneNumber.setValue(value);
+    public RegistrationPage setUserNumber(String value) {
+        userNumber.setValue(value);
         return this;
     }
     public RegistrationPage setBirthDate(String day, String month, String year) {
@@ -80,16 +80,16 @@ public class RegistrationPage {
     }
     public RegistrationPage setState (String value){
         stateInput.click();
-        stateCityWrapperInput.$(byText(value)).click();
-        return this;
-    }
-    public RegistrationPage setSubmit() {
-        submitInput.click();
+        $(byText(value)).click();
         return this;
     }
     public RegistrationPage setCity (String value){
         cityInput.click();
-        stateCityWrapperInput.$(byText(value)).click();
+        $(byText(value)).click();
+        return this;
+    }
+    public RegistrationPage setSubmit() {
+        submitInput.click();
         return this;
     }
 

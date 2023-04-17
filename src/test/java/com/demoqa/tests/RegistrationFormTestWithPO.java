@@ -10,7 +10,7 @@ public class RegistrationFormTestWithPO extends PracticeFormConfig {
                 .setLastName("Tol")
                 .setUserEmail("aaa@qa.com")
                 .setGender("Female")
-                .setPhoneNumber("9999999999")
+                .setUserNumber("9999999999")
                 .setBirthDate("30", "10", "1987")
                 .setSubjectsInput("Math")
                 .setHobbies("Sports")

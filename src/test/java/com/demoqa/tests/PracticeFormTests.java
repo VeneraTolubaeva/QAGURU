@@ -2,6 +2,7 @@ package com.demoqa.tests;
 
 import com.demoqa.tests.PracticeFormConfig;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,6 +12,8 @@ public class PracticeFormTests extends PracticeFormConfig {
 
     @Test
     void successfulPracticeFormTest() {
+//        ChromeDriver driver = new ChromeDriver();
+//        driver.get("https://demoqa.com/automation-practice-form");
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
