@@ -7,7 +7,6 @@ import static com.demoqa.utils.RandomUtils.*;
 public class RegistrationPageValue {
     private static Faker faker = new Faker();
     //Faker faker = new Faker(new Locale("fr"));
-
     public static String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),

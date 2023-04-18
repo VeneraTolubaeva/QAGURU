@@ -6,9 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
     static String[] genders = {"Male", "Female", "Other"};
-    static String[] day = {"001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013",
-    "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029",
-    "030", "031"};
     static String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"};
     static String[] subjects = {"Maths", "Accounting", "Arts", "Chemistry", "Physics", "History", "Economics",
@@ -19,7 +16,6 @@ public class RandomUtils {
     static String[] cityForUttarPradesh = {"Agra", "Lucknow", "Merrut"};
     static String[] cityForHaryana = {"Karnal", "Panipat"};
     static String[] cityForRajasthan = {"Jaipur", "Jaiselmer"};
-
 
     public static void main(String[] args) {
         System.out.println(getRandomUuid());
@@ -103,6 +99,4 @@ public class RandomUtils {
         }
         return null;
     }
-
-
 }
