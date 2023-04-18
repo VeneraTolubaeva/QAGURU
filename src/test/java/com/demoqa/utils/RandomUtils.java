@@ -79,24 +79,36 @@ public class RandomUtils {
     }
     public static String getRandomCity(String state){
         String city;
-        switch (state) {
-            case "NCR": {
-                city = getRandomItemFromArray(cityForNCR);
-                return city;
-            }
-            case "Uttar Pradesh": {
-                city = getRandomItemFromArray(cityForUttarPradesh);
-                return city;
-            }
-            case "Haryana": {
-                city = getRandomItemFromArray(cityForHaryana);
-                return city;
-            }
-            case "Rajasthan": {
-                city = getRandomItemFromArray(cityForRajasthan);
-                return city;
-            }
+        if (state == "NCR") {
+            city = getRandomItemFromArray(cityForNCR);
+            return city;
+        } else if (state == "Uttar Pradesh") {
+            city = getRandomItemFromArray(cityForUttarPradesh);
+            return city;
+        } else if (state == "Haryana") {
+            city = getRandomItemFromArray(cityForHaryana);
+            return city;
+        } else if (state == "Rajasthan"){
+            city = getRandomItemFromArray(cityForRajasthan);
+            return city;
         }
+//        switch (state) {
+//            case "NCR": {
+//                city = getRandomItemFromArray(cityForNCR);
+//                return city;
+//            }
+//            case "Uttar Pradesh": {
+//                city = getRandomItemFromArray(cityForUttarPradesh);
+//                return city;
+//            }
+//            case "Haryana": {
+//
+//            }
+//            case "Rajasthan": {
+//                city = getRandomItemFromArray(cityForRajasthan);
+//                return city;
+//            }
+//        }
         return null;
     }
 }
