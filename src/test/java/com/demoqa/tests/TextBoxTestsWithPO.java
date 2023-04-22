@@ -2,7 +2,7 @@ package com.demoqa.tests;
 
 import org.junit.jupiter.api.Test;
 
-public class TextBoxTestsWithPO extends TestBase {
+public class TextBoxTestsWithPO extends TextBoxBase {
     @Test
     void successfulFillFormTest() {
         textBoxPage.openPage()

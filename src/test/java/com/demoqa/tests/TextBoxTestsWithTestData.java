@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.demoqa.testData.TextBoxPageValue.*;
 
-public class TextBoxTestsWithTestData extends TestBase {
+public class TextBoxTestsWithTestData extends TextBoxBase {
     @Test
     void successfulFillFormTest() {
         textBoxPage.openPage()

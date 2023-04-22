@@ -1,13 +1,10 @@
 package com.demoqa.tests;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
-import java.util.Locale;
 
-import static com.demoqa.testData.RegistrationModalFields.*;
+import static com.demoqa.pages.RegistrationPage.*;
 import static com.demoqa.testData.RegistrationPageValue.*;
-import static com.demoqa.utils.RandomUtils.*;
 
 public class PracticeFormTestsWithTestData extends PracticeFormConfig {
 
@@ -15,10 +12,11 @@ public class PracticeFormTestsWithTestData extends PracticeFormConfig {
     void successfulPracticeFormTest() {
 
         registrationPage.openPage()
+                .closeBanner()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
-                .setGender(genderValue)
+                .setGenderWrapper(genderValue)
                 .setUserNumber(phoneNumber)
                 .setBirthDate(dayValue, monthsValue, yearValue)
                 .setSubjectsInput(subjectValue)

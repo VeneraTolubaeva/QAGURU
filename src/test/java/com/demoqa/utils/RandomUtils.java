@@ -1,16 +1,18 @@
 package com.demoqa.utils;
 
+import com.demoqa.pages.components.enums.GendersEnum;
+import com.demoqa.pages.components.enums.HobbiesEnum;
+import com.demoqa.pages.components.enums.SubjectsEnum;
+import com.github.javafaker.Faker;
+
 import java.security.SecureRandom;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
-    static String[] genders = {"Male", "Female", "Other"};
+    private static Faker faker = new Faker();
     static String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"};
-    static String[] subjects = {"Maths", "Accounting", "Arts", "Chemistry", "Physics", "History", "Economics",
-            "Social Studies", "Civics", "Hindi", "English", "Biology", "Computer Science"};
-    static String[] hobbies = {"Sports", "Reading", "Music"};
     static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
     static String[] cityForNCR = {"Delhi", "Gurgaon", "Noida"};
     static String[] cityForUttarPradesh = {"Agra", "Lucknow", "Merrut"};
@@ -22,7 +24,6 @@ public class RandomUtils {
         System.out.println(getRandomString(10));
         System.out.println(getRandomEmail());
         System.out.println(getRandomInt(11111111, 99999999));
-        System.out.println(getRandomItemFromArray(genders));
     }
     public static String getRandomUuid() {
         String uuid = UUID.randomUUID().toString();
@@ -44,18 +45,17 @@ public class RandomUtils {
     public static int getRandomInt(int min, int max){
         return ThreadLocalRandom.current().nextInt(min, max+1);
     }
-    public static String getRandomPhone(){
-        return "+7 (9" + getRandomInt(11,99) + ")" + getRandomInt(111,999) + "-" + getRandomInt(1111,9999);
-    }
-    public static Long getRandomLong(){
-        return null;
-    }
-    public static String getRandomItemFromArray(String[] values){
-        int index = getRandomInt(0, values.length-1);
-        return values[index];
+// getRandomItemFromArray можно было не писать, т.к. в фэйкере есть faker.options().option()
+//    public static String getRandomItemFromArray(String[] values){
+//        int index = getRandomInt(0, values.length-1);
+//        return values[index];
+//    }
+    public static <T extends Enum<?>> T getRandomEnum(Class<T> enumClass) {
+        int index = getRandomInt(0,enumClass.getEnumConstants().length - 1);
+        return enumClass.getEnumConstants()[index];
     }
     public static String getRandomGender(){
-        return getRandomItemFromArray(genders);
+        return getRandomEnum(GendersEnum.class).getGenders();
     }
     public static String getRandomDay() {
         int day = getRandomInt(1, 30);
@@ -66,49 +66,32 @@ public class RandomUtils {
         }
     }
     public static String getRandomMonths() {
-        return getRandomItemFromArray(months);
+        return faker.options().option(months);
     }
     public static String getRandomSubjects(){
-        return getRandomItemFromArray(subjects);
+        return getRandomEnum(SubjectsEnum.class).getSubjects();
     }
     public static String getRandomHobbies(){
-        return getRandomItemFromArray(hobbies);
+        return getRandomEnum(HobbiesEnum.class).getHobbies();
     }
     public static String getRandomState(){
-        return getRandomItemFromArray(state);
+        return faker.options().option(state);
     }
     public static String getRandomCity(String state){
         String city;
         if (state == "NCR") {
-            city = getRandomItemFromArray(cityForNCR);
+            city = faker.options().option(cityForNCR);
             return city;
         } else if (state == "Uttar Pradesh") {
-            city = getRandomItemFromArray(cityForUttarPradesh);
+            city = faker.options().option(cityForUttarPradesh);
             return city;
         } else if (state == "Haryana") {
-            city = getRandomItemFromArray(cityForHaryana);
+            city = faker.options().option(cityForHaryana);
             return city;
         } else if (state == "Rajasthan"){
-            city = getRandomItemFromArray(cityForRajasthan);
+            city = faker.options().option(cityForRajasthan);
             return city;
         }
-//        switch (state) {
-//            case "NCR": {
-//                city = getRandomItemFromArray(cityForNCR);
-//                return city;
-//            }
-//            case "Uttar Pradesh": {
-//                city = getRandomItemFromArray(cityForUttarPradesh);
-//                return city;
-//            }
-//            case "Haryana": {
-//
-//            }
-//            case "Rajasthan": {
-//                city = getRandomItemFromArray(cityForRajasthan);
-//                return city;
-//            }
-//        }
         return null;
     }
 }

@@ -2,36 +2,50 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
-import com.demoqa.pages.components.ResultsModal;
+import com.demoqa.pages.components.ResultsModalComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static java.lang.String.format;
 
 public class RegistrationPage {
+
     CalendarComponent calendarComponent = new CalendarComponent();
-    ResultsModal resultsModal = new ResultsModal();
+    ResultsModalComponent resultsModal = new ResultsModalComponent();
     SelenideElement formHeaderText = $(".practice-form-wrapper"),
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
-            gender = $("#genterWrapper"),
+            genderWrapper = $("#genterWrapper"),
             userNumber = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper"),
+            hobbiesWrapper = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
             currentAddressInput = $("#currentAddress"),
             stateInput = $("#state"),
             cityInput = $("#city"),
-            stateCityWrapperInput = $("#stateCity-wrapper"),
-            submitInput = $("#submit");
+            submitButton = $("#submit");
+
+    public static String
+            studentNameField = "Student Name",
+            studentEmailField = "Student Email",
+            genderField = "Gender",
+            mobileField = "Mobile",
+            dateBirthField = "Date of Birth",
+            subjectsField = "Subjects",
+            hobbiesField = "Hobbies",
+            pictureField = "Picture",
+            addressField = "Address",
+            stateCityField = "State and City";
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         formHeaderText.shouldHave(text("Student Registration Form"));
+        return this;
+    }
+    public RegistrationPage closeBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -49,8 +63,8 @@ public class RegistrationPage {
         userEmailInput.setValue(value);
         return this;
     }
-    public RegistrationPage setGender(String value) {
-        gender.$(byText(value)).click();
+    public RegistrationPage setGenderWrapper(String value) {
+        genderWrapper.$(byText(value)).click();
         return this;
     }
     public RegistrationPage setUserNumber(String value) {
@@ -67,7 +81,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setHobbies (String value){
-        hobbiesInput.$(byText(value)).click();
+        hobbiesWrapper.$(byText(value)).click();
         return this;
     }
     public RegistrationPage setUploadPicture (String value){
@@ -89,7 +103,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setSubmit() {
-        submitInput.click();
+        submitButton.click();
         return this;
     }
 
