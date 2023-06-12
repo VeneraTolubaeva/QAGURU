@@ -36,6 +36,6 @@ public class RemotePracticeFormConfig {
         Attach.screenshotAs("My Screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.getVideoUrl();
+        Attach.addVideo();
     }
 }
