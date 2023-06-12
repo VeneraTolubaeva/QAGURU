@@ -1,8 +1,17 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.pages.components.CalendarComponent;
 import com.demoqa.pages.components.ResultsModalComponent;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -41,6 +50,7 @@ public class RegistrationPage {
             stateCityField = "State and City";
 
     public RegistrationPage openPage() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         open("/automation-practice-form");
         formHeaderText.shouldHave(text("Student Registration Form"));
         return this;
@@ -114,10 +124,15 @@ public class RegistrationPage {
     public RegistrationPage verifyResult(String key, String value) {
         resultsModal.verifyResult(key, value);
         return this;
+
     }
 
     public RegistrationPage setCloseModal() {
         resultsModal.closeModal();
         return this;
+    }
+    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
+    public byte[] takeScreenshot() {
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

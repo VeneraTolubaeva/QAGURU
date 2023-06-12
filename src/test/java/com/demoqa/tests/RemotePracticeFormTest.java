@@ -1,5 +1,6 @@
 package com.demoqa.tests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.Tag;
@@ -13,12 +14,9 @@ import static com.demoqa.testData.RegistrationPageValue.*;
 import static io.qameta.allure.Allure.attachment;
 
 public class RemotePracticeFormTest extends RemotePracticeFormConfig {
-
     @Test
     @Tag("remote")
-    void successfulPracticeFormTest() {
-
-        attachment("Source", webdriver().driver().source());
+    void remotePracticeFormTest() {
 
         registrationPage.openPage()
                 .closeBanner()
@@ -49,9 +47,5 @@ public class RemotePracticeFormTest extends RemotePracticeFormConfig {
                 .verifyResult(stateCityField, (stateValue + " " + cityValue));
 
         registrationPage.setCloseModal();
-    }
-    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

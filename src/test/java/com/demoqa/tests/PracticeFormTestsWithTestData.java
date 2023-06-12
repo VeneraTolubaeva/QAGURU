@@ -49,8 +49,4 @@ public class PracticeFormTestsWithTestData extends PracticeFormConfig {
 
         registrationPage.setCloseModal();
     }
-    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }
 }
