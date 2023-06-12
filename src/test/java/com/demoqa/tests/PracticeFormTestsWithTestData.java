@@ -1,15 +1,23 @@
 package com.demoqa.tests;
 
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 
+import static com.codeborne.selenide.Selenide.webdriver;
 import static com.demoqa.pages.RegistrationPage.*;
 import static com.demoqa.testData.RegistrationPageValue.*;
+import static io.qameta.allure.Allure.attachment;
 
 public class PracticeFormTestsWithTestData extends PracticeFormConfig {
 
     @Test
     void successfulPracticeFormTest() {
+
+        attachment("Source", webdriver().driver().source());
 
         registrationPage.openPage()
                 .closeBanner()
@@ -40,5 +48,9 @@ public class PracticeFormTestsWithTestData extends PracticeFormConfig {
                 .verifyResult(stateCityField, (stateValue + " " + cityValue));
 
         registrationPage.setCloseModal();
+    }
+    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
+    public byte[] takeScreenshot() {
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
