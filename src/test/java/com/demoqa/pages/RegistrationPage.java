@@ -50,7 +50,6 @@ public class RegistrationPage {
             stateCityField = "State and City";
 
     public RegistrationPage openPage() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         open("/automation-practice-form");
         formHeaderText.shouldHave(text("Student Registration Form"));
         return this;
@@ -130,9 +129,5 @@ public class RegistrationPage {
     public RegistrationPage setCloseModal() {
         resultsModal.closeModal();
         return this;
-    }
-    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
