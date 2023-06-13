@@ -18,7 +18,7 @@ public class RemotePracticeFormConfig {
     private static String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
     private static String browser = System.getProperty("browser", "chrome");
     private static String browserSize = System.getProperty("browserSize", "1920x1080");
-    private static String browserVersion = System.getProperty("browserVersion", "100.0");
+    private static String browserVersion = System.getProperty("browserVersion", "112");
     @BeforeAll
     static void beforeAll() {
         WebDriverManager.chromedriver().setup();
