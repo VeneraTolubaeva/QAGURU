@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.helpers.Attach;
 import com.demoqa.pages.RegistrationPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,16 +14,21 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class RemotePracticeFormConfig {
     RegistrationPage registrationPage = new RegistrationPage();
+    private static String baseURL = System.getProperty("baseUrl", "https://demoqa.com");
+    private static String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+    private static String browser = System.getProperty("browser", "chrome");
+    private static String browserSize = System.getProperty("browserSize", "1920x1080");
+    private static String browserVersion = System.getProperty("browserVersion", "100.0");
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        WebDriverManager.chromedriver().setup();
+        Configuration.baseUrl = baseURL;
+        Configuration.remote = remote;
+        Configuration.browser = browser;
+        Configuration.browserSize = browserSize;
+        Configuration.browserVersion = browserVersion;
         Configuration.browserPosition = "0x0";
         Configuration.pageLoadStrategy = "eager";
-
-        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
