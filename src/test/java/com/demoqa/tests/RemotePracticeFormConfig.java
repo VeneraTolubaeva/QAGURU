@@ -21,7 +21,6 @@ public class RemotePracticeFormConfig {
     private static String browserVersion = System.getProperty("browserVersion", "112");
     @BeforeAll
     static void beforeAll() {
-        WebDriverManager.chromedriver().setup();
         Configuration.baseUrl = baseURL;
         Configuration.remote = remote;
         Configuration.browser = browser;
